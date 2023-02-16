@@ -1,0 +1,46 @@
+import java.util.*;
+public class Program
+{
+    public static void methdod1(int arr[],int n){
+        boolean b[]=new boolean[n];
+        System.out.println("Count of every element in array is : ");
+        for(int i = 0;i<n;i++){
+            //skipping same duplicate element
+            if(b[i]==true) continue;
+
+            //calculating count of each element
+            int count = 1;
+            for(int j = i+1;j<n;j++){
+                if(arr[i]==arr[j]){
+                    b[j]=true;
+                    count++;
+                }
+            }
+            System.out.println(arr[i]+" "+count);
+        }
+    }
+    public static void method2(int arr[],int n){
+        System.out.println("Count of every element in array is : ");
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i = 0;i<n;i++){
+            if(map.containsKey(arr[i])){
+            map.put(arr[i], map.get(arr[i]) + 1);            
+            
+            }
+            else map.put(arr[i],1);
+        }
+        for(Map.Entry<Integer,Integer> entry : map.entrySet()){
+            System.out.println(entry.getKey()+" "+entry.getValue());
+        }
+    }
+    public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[]=new int[n];
+        for(int i = 0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        //methdod1(arr,n);
+        method2(arr,n);
+	}
+}
