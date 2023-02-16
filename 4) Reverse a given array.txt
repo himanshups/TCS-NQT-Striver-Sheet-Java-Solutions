@@ -1,0 +1,70 @@
+import java.util.*;
+public class Program
+{
+    // printing the array
+    public static void print_array(int arr[], int n){
+        System.out.print("Reversed Array ");
+        for(int i: arr)System.out.print(i+" ");
+    }
+    //mehtod 1:
+    public static void method1(int arr[],int n){
+        int b[]=new int[n];
+        for(int i = n-1;i>=0;i--){
+            b[n-1-i]=arr[i];
+        }
+        print_array(b,n);
+    }
+    public static void method2(int arr[],int n){
+        int start = 0;
+        int end = n-1;
+        while(start<end){
+            int temp = arr[start];
+            arr[start]=arr[end];
+            arr[end]=temp;
+            start++;
+            end--;
+        }
+        print_array(arr,n);
+    }
+    
+    public static void method3(int arr[],int start,int end){
+        if(start<end){
+            int temp = arr[start];
+            arr[start]=arr[end];
+            arr[end]=temp;
+            method3(arr,start+1,end-1);
+        }
+        
+    }
+    public static void method4(){
+        Integer arr[]={1,2,3,4,5};
+        Collections.reverse(Arrays.asList(arr));
+        System.out.println("Reversed array is");
+        for(int i: arr)System.out.print(i+" ");
+    }
+    // Reverse the Array:
+    public static void reverse_array(int arr[],int n){
+        //method 1 : Brute force approach takes O(n) time and O(n) space complexity
+        // method1(arr,n);
+        
+        //method 2 : Iteration approach takes O(n) time and O(1) space complexity
+        // method2(arr,n);
+        
+        //method 3 : Recursive approach takes O(n) time and O(1) space complexity
+        // method3(arr,0,n-1);
+        // print_array(arr,n);
+        
+        //method 4 : Using Java Collections Frameworks Collections.reverse(arr) and uses O(n) time and O(1) space complexity
+        method4();
+        
+    }
+    public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+	    int n = sc.nextInt();sc.nextLine();
+	    int arr[]=new int[n];
+	    for(int i = 0;i<n;i++){
+	        arr[i]=sc.nextInt();
+	    }
+	    reverse_array(arr,n);
+	}
+}
