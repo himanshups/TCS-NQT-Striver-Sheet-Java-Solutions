@@ -1,0 +1,29 @@
+public class Program
+{
+    public static void insertAtbegin(int arr[],int n, int choice){
+        for(int i = n-1;i>=0;i--) arr[i+1]=arr[i];
+        arr[0]=choice;
+        for(int i: arr) System.out.print(i+" ");
+    }
+    public static void insertAtend(int arr[], int n , int choice){
+        arr[n]=choice;
+        for(int i: arr) System.out.print(i+" ");
+    }
+    public static void insertAtposition(int arr[], int n ,int position , int choice){
+        for(int i = n-1;i>=position;i--){
+            arr[i+1]=arr[i];
+        }
+        arr[position]=choice;
+        for(int i: arr) System.out.print(i+" ");
+
+    }
+    public static void main(String[] args) {
+		int n = 8;
+	    int arr[]={1,2,3,4,5,6,7,8,0};
+	    int choice = 88;
+	    int position = 4;
+	   // insertAtbegin(arr,n,choice);
+	   // insertAtend(arr,n,choice);
+	   insertAtposition(arr,n,position,choice);
+	}
+}

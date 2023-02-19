@@ -1,0 +1,49 @@
+import java.util.*;
+import java.util.Map.Entry;
+public class Program
+{
+    public static void method1(int arr[],int n){
+        int duplicate[] = new int[n];
+        int count=0;
+        for(int i=0;i<n;i++){
+            for(int j = i+1;j<n;j++){
+                if(arr[i]==arr[j])
+                    duplicate[count++]=arr[i];
+            }
+        }
+        for(int i =0;i<count;i++)
+            if(duplicate[i]!=duplicate[i+1])
+                System.out.print(duplicate[i]+" ");
+        
+    }
+    public static void method2(int arr[], int n){
+        Arrays.sort(arr);
+        for(int i = 0;i<n-1;i++){
+            if(arr[i]==arr[i+1])System.out.print(arr[i]+" ");
+        }
+    }
+    public static void method3(int arr[], int n){
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i:arr){
+            if(map.get(i)==null) map.put(i,1);
+            else map.put(i,map.get(i)+1);
+        }
+        for(Entry<Integer,Integer> entry: map.entrySet()){
+            if(entry.getValue()>1)System.out.print(entry.getKey()+" ");
+        }
+    }
+    public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+	    int n = sc.nextInt();
+	    int arr[]=new int[n];
+	    for(int i = 0;i<n;i++) arr[i]=sc.nextInt();
+	    // method 1 : O(n2) time complexity and O(n) space complexity
+	   // method1(arr,n);
+	   
+	   // method 2 : O(nlogn+n) time complexity and O(1) space complexity
+	   //method2(arr,n);
+	    
+	    //method3 : O(n) time complexity and O(n) space complexity
+	    method3(arr,n);
+	}
+}
